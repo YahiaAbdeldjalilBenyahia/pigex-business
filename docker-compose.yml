@@ -12,6 +12,8 @@ services:
     volumes:
       - ./server/app/:/app/
 
+    networks:
+      - pigex
     restart: always
 
   client:
@@ -23,4 +25,7 @@ services:
       - "7000:4173"
     
     volumes:
-      - ./client/
+      - ./client/app/:/app/
+
+    networks:
+      - pigex
