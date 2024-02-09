@@ -2,7 +2,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-800 bg-opacity-50 backdrop-blur-sm">
+    <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-800 bg-opacity-50 backdrop-blur-sm z-50">
       {/* Loading spinner */}
       <ul className="space-y-4 flex flex-col items-center justify-center w-full">
         <h1 className="xxs:text-lg animate-pulse text-white">
