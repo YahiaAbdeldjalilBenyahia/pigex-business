@@ -2,9 +2,6 @@ import React, { useEffect } from "react";
 import blog from "../assets/ai.jpg";
 
 const Blog = () => {
-  useEffect(()=>{
-    console.log(import.meta.env.VITE_API_URL) ;
-  }, [])
   return (
     <div className="slide-left backdrop-blur-sm bg-opacity-50 w-screen h-screen max-w-4xl mx-auto px-4 pt-20">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">

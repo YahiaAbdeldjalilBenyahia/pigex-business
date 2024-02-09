@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import close from "../assets/close.png";
 import { data } from "autoprefixer";
-import axios from "axios";
+import { api } from "../../utils/api";
 const Results = ({ message, dataDescription, resultString }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
@@ -36,8 +36,8 @@ const Results = ({ message, dataDescription, resultString }) => {
   const Regenerate = async () => {
     try {
       setIsLoading(true);
-      await axios
-        .post("http://localhost:5000/chainify", {
+      await api
+        .post("/chainify", {
           dataDescription: dataDescription,
           data: resultString,
         })
