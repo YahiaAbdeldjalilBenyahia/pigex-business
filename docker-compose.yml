@@ -20,11 +20,7 @@ services:
       - .env
     
     ports:
-<<<<<<< HEAD
-      - "4173:7000"
-=======
       - "7000:4173"
->>>>>>> beada4158dde5cb0d84ddee8de58103bc3da0ef9
     
     volumes:
       - ./client/
