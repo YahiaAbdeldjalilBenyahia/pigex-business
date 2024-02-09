@@ -10,6 +10,8 @@ WORKDIR /app
 
 RUN pip install -r requirements.txt
 
+COPY ./app /app
+
 RUN chmod +x launch.sh
 
 CMD [ "./launch.sh" ]
