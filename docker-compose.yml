@@ -2,6 +2,7 @@ version: '2.2'
 
 services:
   server:
+    container_name: backend
     build: ./server/
     env_file:
       - .env
@@ -17,6 +18,7 @@ services:
     restart: always
 
   client:
+    container_name: frontend
     build: ./client/
     env_file:
       - .env
