@@ -5,7 +5,10 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div
-      className={`slide-down relative font-display w-screen h-screen bg-cover bg-center`}
+      style={{ backgroundImage: `url(${backgroundImage})` }}
+      className={`
+      bg-${backgroundImage}
+      slide-down relative font-display w-screen h-screen bg-cover bg-center`}
     >
       <section className="bg-zinc-950 w-full h-full bg-opacity-60 dark:bg-gray-900 pt-28">
         <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16">

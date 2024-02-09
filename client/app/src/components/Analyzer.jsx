@@ -87,40 +87,30 @@ const Analyzer = () => {
   const [step, setStep] = useState(0);
   const [limitLeft, setLimitLeft] = useState(0);
   useEffect(() => {
-    // Function to update isBelowThreshold based on window width
     function handleResize() {
-      setIsBelowThreshold(window.innerWidth < 768); // Change 768 to your desired width threshold
+      setIsBelowThreshold(window.innerWidth < 768);
       if (isBelowThreshold) {
         setStep(3);
       } else {
         setStep(8);
       }
+      console.log(isBelowThreshold);
     }
-    // console.log(isBelowThreshold);
-    // console.log(step);
     if (fileData) setMax(fileData[0].length);
-    // Initial call to handleResize
+
     handleResize();
 
-    // Event listener for window resize
     window.addEventListener("resize", handleResize);
-
-    // Cleanup function to remove event listener
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Check if there are more than 5 columns
     if (fileData && fileData.length > 0 && fileData[0].length > max) {
-      // console.log(fileData[0].length);
-      setMax(10);
       setHiddenColumns(true);
     } else {
       setHiddenColumns(false);
     }
-  }, [fileData]);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [fileData, window.innerWidth]);
+
   return (
     <div
       className={`slide-down font-display relative w-screen h-screen bg-cover bg-center`}
@@ -208,7 +198,7 @@ const Analyzer = () => {
                   Data Overview
                 </label>
                 <div className="flex justify-center space-x-14">
-                  {hiddenColumns && (
+                  {step < fileData[0].length && (
                     <>
                       <button
                         onClick={() => {
@@ -225,7 +215,7 @@ const Analyzer = () => {
                       <button
                         onClick={() => {
                           console.log("comparing ", limitLeft + step, max);
-                          if (limitLeft + step < max)
+                          if (limitLeft + step <= max)
                             setLimitLeft(limitLeft + step);
                           else setLimitLeft(max - step);
                           console.log("LIMIT LEFT:", limitLeft);
@@ -264,8 +254,12 @@ const Analyzer = () => {
               </div>
               <button
                 onClick={() => {
-                  setIsLoading(true);
-                  handleSubmit();
+                  if (!descriptionError) {
+                    setIsLoading(true);
+                    handleSubmit();
+                  } else {
+                    alert("You must provide a description for the dataset!");
+                  }
                 }}
                 className="bg-gradient-to-r from-purple-600 to-blue-600 flex justify-around space-x-4 hover:scale-105 hover:rounded-xl mt-4 text-white font-bold py-2 px-4 rounded-lg hover:border-transparent transition-all duration-300 ease-in-out hover:shadow-md"
               >
