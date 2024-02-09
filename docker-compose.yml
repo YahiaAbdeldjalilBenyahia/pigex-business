@@ -20,7 +20,7 @@ services:
       - .env
     
     ports:
-      - "5173:7000"
+      - "7000:4173"
     
     volumes:
       - ./client/
