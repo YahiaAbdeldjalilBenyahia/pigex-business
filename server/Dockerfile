@@ -1,6 +1,6 @@
 FROM python:latest
 
-RUN apt update - y && apt upgrade -y
+RUN apt update -y && apt upgrade -y
 
 RUN mkdir /app
 
