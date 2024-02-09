@@ -22,7 +22,7 @@ from openai import OpenAI
 client = OpenAI()
 
 app = Flask(__name__)
-CORS(app, origins="http://localhost:5173")
+# CORS(app, origins="http://localhost:5173")
 
 # TODO: LOGIN AND SIGNUP
 llm = ChatOpenAI(openai_api_key=key)
@@ -83,4 +83,4 @@ def truncate_string(s, max_length):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
