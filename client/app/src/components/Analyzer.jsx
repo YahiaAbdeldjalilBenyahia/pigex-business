@@ -94,7 +94,6 @@ const Analyzer = () => {
       } else {
         setStep(8);
       }
-      console.log(isBelowThreshold);
     }
     if (fileData) setMax(fileData[0].length);
 
