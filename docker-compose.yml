@@ -2,6 +2,7 @@ version: '2.2'
 
 services:
   server:
+    container_name: backend
     build: ./server/
     env_file:
       - .env
@@ -12,15 +13,24 @@ services:
     volumes:
       - ./server/app/:/app/
 
+    networks:
+      - pigex
     restart: always
 
   client:
+    container_name: frontend
     build: ./client/
     env_file:
       - .env
     
     ports:
-      - "5173:7000"
+      - "7000:4173"
     
     volumes:
-      - ./client/
+      - ./client/app/:/app/
+
+    networks:
+      - pigex
+
+networks:
+  pigex:

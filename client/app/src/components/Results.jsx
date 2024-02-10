@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import close from "../assets/close.png";
 import { data } from "autoprefixer";
-import axios from "axios";
+import { api } from "../../utils/api";
 const Results = ({ message, dataDescription, resultString }) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
-  const [help, setHelp] = useState([]);
+  const [help, setHelp] = useState([]); 
   useEffect(()=>console.log(message),[]);
   const interpretJSONString = (str) => {
     setHelp([""]);
@@ -22,12 +22,12 @@ const Results = ({ message, dataDescription, resultString }) => {
   useEffect(() => {
     // interpretJSONString(JSON.stringify(message));
     setHelp(message.split('\n'));
-  }, [message]);
+  }, [message]); 
   const Regenerate = async () => {
     try {
       setIsLoading(true);
-      await axios
-        .post("http://localhost:5000/chainify", {
+      await api
+        .post("/chainify", {
           dataDescription: dataDescription,
           data: resultString,
         })
@@ -52,7 +52,7 @@ const Results = ({ message, dataDescription, resultString }) => {
         <h1
           className="text-sm leading-relaxed slide-down"
           style={{ lineHeight: "1" }}
-        >
+        > 
           {!isLoading && (
             <ul className="flex flex-col space-y-2">
               {help && help.map((item, index) => <li key={index} className="">{item}</li>)}
@@ -79,7 +79,7 @@ const Results = ({ message, dataDescription, resultString }) => {
           >
             <img src={close} className="xxs:w-4 xxs:h-4 w-8 h-8" />
             <h1 className="font-regular p-2">Close</h1>
-          </button>
+          </button> 
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import search from "../assets/search.png";
 import Loading from "./Loading";
 import Results from "./Results";
 
+import { api } from "../../utils/api";
 import right from "../assets/greater.png";
 
 import backgroundImage from "../assets/backgrounds/8.jpg";
@@ -56,8 +57,8 @@ const Analyzer = () => {
         const newString = resultString + fileData[i].join(" ") + "\n";
         setResultString(newString);
       }
-      await axios
-        .post("http://localhost:5000/chainify", {
+      await api
+        .post("/chainify", {
           dataDescription: dataDescription,
           data: resultString,
         })
