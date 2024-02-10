@@ -66,8 +66,8 @@ const Analyzer = () => {
       console.log("calling api");
 
 
-      await api
-        .post("/chainify", {
+      await axios
+        .post("pigex-back-host-a7k1qgdse-yahiadzz.vercel.app/chainify", {
           dataDescription: dataDescription,
           data: resultString,
         })
