@@ -7,7 +7,7 @@ const Navbar = ({ username, isLogged, isAdmin, isMod, isNormal }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   // const signOut = useSignOut();
   return (
-    <nav className=" shadow-2xl fixed z-50 font-primary bg-transparent p-4 w-screen">
+    <nav className="shadow-2xl fixed z-50 font-primary bg-transparent py-2 w-screen">
       <div className="container mx-auto flex justify-between items-center">
         <div
           onClick={() => navigate("/")}

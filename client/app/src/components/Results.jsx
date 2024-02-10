@@ -57,11 +57,11 @@ const Results = ({ message, dataDescription, resultString }) => {
   };
 
   return (
-    <div className="slide-down mt-20 p-20 bg-opacity-70 backdrop-blur-md fixed inset-0 flex items-center justify-center z-50">
+    <div className="slide-down mt-16 px-20 bg-opacity-70 backdrop-blur-md fixed inset-0 flex items-center justify-center z-50">
       <div className="bg-gray-900 text-white p-6 rounded-lg shadow-lg">
         <h1
-          className="text-lg leading-relaxed slide-down"
-          style={{ lineHeight: "1.3" }}
+          className="text-sm leading-relaxed slide-down"
+          style={{ lineHeight: "1" }}
         >
           {/* {!isLoading && help} */}
           {/* {!isLoading && h} */}
