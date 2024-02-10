@@ -46,17 +46,26 @@ const Analyzer = () => {
   const [showResults, setShowResults] = useState(false);
   const [resultString, setResultString] = useState("");
   const handleSubmit = async () => {
+
     setDescriptionError(false);
-    if (dataDescription.length < 100) {
-      setDescriptionError(true);
-      return;
-    }
+    // if (dataDescription.length < 100) {
+    //   setDescriptionError(true);
+    //   return;
+    // }
+
+    setIsLoading(true);
+
     try {
+      console.log("calling api");
+
       for (let i = 0; i < fileData.length; i++) {
         // Concatenate the strings in each row with a newline character
         const newString = resultString + fileData[i].join(" ") + "\n";
         setResultString(newString);
       }
+      console.log("calling api");
+
+
       await api
         .post("/chainify", {
           dataDescription: dataDescription,
@@ -255,7 +264,6 @@ const Analyzer = () => {
               <button
                 onClick={() => {
                   if (!descriptionError) {
-                    setIsLoading(true);
                     handleSubmit();
                   } else {
                     alert("You must provide a description for the dataset!");
